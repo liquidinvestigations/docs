@@ -11,4 +11,4 @@ for repo in $(find clones -mindepth 2 -maxdepth 2 -type d); do
   )
 done
 
-echo "please inspect the repos and run ./push.sh"
+echo "please inspect the repos and run './forall.sh git push'"
