@@ -11,11 +11,9 @@ git@github.com:liquidinvestigations/liquid-nextcloud
 git@github.com:liquidinvestigations/h-client
 git@github.com:liquidinvestigations/oregano-example
 git@github.com:liquidinvestigations/monitoring
-git@github.com:hoover/search
-git@github.com:hoover/snoop2
-git@github.com:hoover/ui
-git@github.com:hoover/reup
-git@github.com:hoover/docker-setup
-git@github.com:hoover/testdata
-git@github.com:hoover/hoover.github.io
-git@github.com:hoover/magic-definitions
+git@github.com:liquidinvestigations/hoover-search
+git@github.com:liquidinvestigations/hoover-snoop2
+git@github.com:liquidinvestigations/hoover-ui
+git@github.com:liquidinvestigations/reup
+git@github.com:liquidinvestigations/testdata
+git@github.com:liquidinvestigations/magic-definitions
