@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Admin Guide: Wiki Permissions for Dokuwiki - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Maintenance/">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#liquid-core-admin-interface">Liquid Core Admin interface</a></li>
+<li><a href="#dokuwiki-admin-interface">DokuWiki Admin interface</a></li>
+<li class="child"><a href="#virtual-groups-create-and-manage-wiki-groups">'Virtual Groups': Create and manage wiki groups</a></li>
+<li class="child"><a href="#access-control-lists">'Access Control Lists'</a></li>
+<li><a href="#sitemap">Sitemap</a></li>
+<li><a href="#pre-defined-groups-all-admin">Pre-defined Groups: ALL, admin</a></li>
+<li class="child"><a href="#the-superuser-permission-model">The Superuser permission model</a></li>
+<li><a href="#warnings">Warnings</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<p>DokuWiki allows for access control for each page and namespace of the wiki. Permissions can be given to individual users or to entire groups.
+Admin permissions will be assigned in both the Liquid Core Admin page as well as in the DokuWiki Admin pages.</p>
+<h2 id="liquid-core-admin-interface">Liquid Core Admin interface<a class="headerlink" href="#liquid-core-admin-interface" title="Permanent link">#</a></h2>
+<ol>
+<li>Go to Liquid Admin</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/1.png" width="800"/>
+<br clear="”right”"/></p>
+<ol>
+<li>Under 'Groups' click the green plus sign to create the group of your choice.</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/2.png" width="800"/>
+<br clear="”right”"/></p>
+<ol>
+<li>Name your group and assign the desired permissions by selecting the checkmarks next to the apps</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/3.png" width="800"/>
+<br clear="”right”"/></p>
+<ol>
+<li>A list of the groups that you created will be displayed under 'Groups', each having access to the different available apps</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/4.png" width="800"/>
+<br clear="”right”"/></p>
+<ol>
+<li>Go to Liquid Admin under Users and create a User and assign it to a Group</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/5.png" width="1000"/>
+<br clear="”right”"/></p>
+<ol>
+<li>When creating a user, you can assign the user to a specific group</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/6.png" width="1000"/>
+<br clear="”right”"/></p>
+<p>In this example, the user test.1 is part of the toto_cutugno and celentano groups</p>
+<ol>
+<li>A list of the created users and their respective group membership will be displayed in the Users view</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/7.png" width="800"/>
+<br clear="”right”"/></p>
+<p><strong>Notes</strong>: 
+* Only users marked as "Staff" and "Superuser" in the Liquid Home Page Admin will see this interface.</p>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/13.png" width="800"/>
+<br clear="”right”"/></p>
+<ul>
+<li>Any user marked as "Staff" and "Superuser" in the Liquid Home Page Admin will have potential access to the entire wiki, both secret and public: they can give themselves access to any page.</li>
+</ul>
+<p><br clear="both"/></p>
+<h2 id="dokuwiki-admin-interface">DokuWiki Admin interface<a class="headerlink" href="#dokuwiki-admin-interface" title="Permanent link">#</a></h2>
+<p>The Wiki Groups themselves are independent of the rest of the system. If you create a group in the 'Liquid Core Admin' page, it will not be synced here, so the user needs to be given access to users and groups separately from the home page or Hoover.</p>
+<ol>
+<li>Navigate to the DokuWiki App, to the Admin interface</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/8.png" width="800"/>
+<br clear="”right”"/></p>
+<h3 id="virtual-groups-create-and-manage-wiki-groups">'Virtual Groups': Create and manage wiki groups<a class="headerlink" href="#virtual-groups-create-and-manage-wiki-groups" title="Permanent link">#</a></h3>
+<ol>
+<li>Select 'Virtual Groups' </li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/9.png" width="800"/>
+<br clear="”right”"/></p>
+<ol>
+<li>Use these simple forms, to add new groups to the system, and link existing users to groups.</li>
+</ol>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/10.png" width="800"/>
+<br clear="”right”"/></p>
+<p><strong>Caveat</strong>: This page does not check if the usernames are actually valid in the system, so please double-check if the correct username is set. To avoid any errors, please copy/paste the username from the Liquid Core Admin page instead of manually writing it.</p>
+<p><br clear="both"/></p>
+<h3 id="access-control-lists">'Access Control Lists'<a class="headerlink" href="#access-control-lists" title="Permanent link">#</a></h3>
+<p>To see this mage, you must have <code>Superuser</code> permission.</p>
+<p>This page controls what users and groups have the following permissions:  <code>Read  Edit  Create  Upload  Delete</code>. It allows you to configure access for each page/namespace, either for a specific user or for an entire group.
+You can also set the default permission set (the <code>*</code> namespace).</p>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/11.png" width="800"/>
+<br clear="”right”"/></p>
+<p>When managing group access permissions, you can assign different levels of permissions, with 'None' being the most limiting access level and  'Delete' being the most permissive level, depending on each use case. </p>
+<p><img align="center" src="https://github.com/liquidinvestigations/docs-img/blob/main/WikiPermissions/12.png" width="800"/>
+<br clear="”right”"/></p>
+<p>More information on the 'Access Control Lists' system, including examples, can be found here: <a href="https://www.dokuwiki.org/acl#access_restrictions">Dokuwiki Access Restrictions</a>, <a href="https://www.dokuwiki.org/acl#acls_by_example">Access Control Examples</a>.</p>
+<h2 id="sitemap">Sitemap<a class="headerlink" href="#sitemap" title="Permanent link">#</a></h2>
+<p>Make sure everyone has access to the <code>tools:index</code> page, to access the Sitemap.</p>
+<p>Use these ACL rules to give everyone access  to <code>tools:index</code>:
+<img alt="Screenshot from 2023-02-18 01-21-53" src="https://user-images.githubusercontent.com/7493327/219815698-eb647d23-d398-4428-b2ee-af7440f4624f.png"/></p>
+<h2 id="pre-defined-groups-all-admin">Pre-defined Groups: ALL, admin<a class="headerlink" href="#pre-defined-groups-all-admin" title="Permanent link">#</a></h2>
+<p>You can make use of the following groups created automatically:
+- <code>ALL</code> and <code>user</code> - both contain all users of the wiki.
+- <code>admin</code> - contains people with Admin access (marked as Staff in Liquid Home Page). However, they cannot access the Virtual Group or ACL pages.
+- <code>superuser</code> - contains all people with Superuser access (marked as Superuser in Liquid Home Page)</p>
+<h3 id="the-superuser-permission-model">The Superuser permission model<a class="headerlink" href="#the-superuser-permission-model" title="Permanent link">#</a></h3>
+<p>Accounts marked as <code>Superuser</code> in the Liquid Home page (and automatically added to the <code>superuser</code> group in DokuWiki) are the only accounts that can access the Virtual Group Manager and the ACL Manager. They are not restricted by the ACLs they create. This means they can view, edit, move, delete any page, in any namespace.</p>
+<p>Because of their elevated access, these accounts should only be used by people with direct access to the servers, for maintenance and fixing permissions.</p>
+<p>See <a href="https://www.dokuwiki.org/acl#access_restrictions">Dokuwiki Access Restrictions Documentation</a> for more details.</p>
+<h2 id="warnings">Warnings<a class="headerlink" href="#warnings" title="Permanent link">#</a></h2>
+<ul>
+<li>The Virtual Manager and ACL forms do not check if the groups and usernames are actually valid in the system, so please double-check the correct group is set. When possible, use copy/paste from the Liquid Home Page / Virtual Group manager instead of manually writing the user/group name, to avoid errors.</li>
+</ul>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.391235+00:00
+  -->
+</div>
+</body>
+</html>

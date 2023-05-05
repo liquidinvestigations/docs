@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>2FA device settings - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Maintenance/">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#2fa-device-settings">2FA device settings</a></li>
+<li class="child"><a href="#change-device">Change device</a></li>
+<li class="child"><a href="#add-new-device">Add new device</a></li>
+<li class="child"><a href="#remove-device">Remove device</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<h1 id="2fa-device-settings">2FA device settings<a class="headerlink" href="#2fa-device-settings" title="Permanent link">#</a></h1>
+<p>You can manage the devices that you use for 2-Factor-Authentication with the liquid-bundle. For example you might want to change devices, if you get a new mobile phone or add a second device to authenticate with.
+To open the settings click the "2FA settings" button on the homepage.</p>
+<p><img alt="2FA Settings" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_1.png"/></p>
+<p>You will see a list of devices that are currently registered. The device named like your username is the first device you registered when logging in. You have three options to manage your devices.</p>
+<p><img alt="2FA device list" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_options.png"/></p>
+<h2 id="change-device">Change device<a class="headerlink" href="#change-device" title="Permanent link">#</a></h2>
+<p>Click the change device button.</p>
+<p><img alt="Change device form" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_3.png"/></p>
+<p>Then enter your current password, a valid OTP-Token (form one of your registered devices) and a name for the new device. After clicking change, you will be redirected and a new QR code is presented to you. </p>
+<p><img alt="QR Code 2FA" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_4.png"/></p>
+<p>Use this QR-Code to register a new Account in your OTP-App on the new device. After that enter a token from the new device to complete the change.</p>
+<p><strong>Be careful:</strong> This will remove all devices from the list, but the new one. All other devices won't work for authentication afterwards.</p>
+<h2 id="add-new-device">Add new device<a class="headerlink" href="#add-new-device" title="Permanent link">#</a></h2>
+<p>Click the add new device button.
+Enter your password, a valid OTP token and a name for your new device.</p>
+<p><img alt="Add 2FA device form" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_add.png"/></p>
+<p>After clicking "Add" you will be redirected to a QR-Code again, that you can use to register the account in your App.</p>
+<p>If you look at the 2FA settings again, after adding a new device you should see two devices in the list.</p>
+<p><img alt="2FA multiple devices" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_6.png"/></p>
+<h2 id="remove-device">Remove device<a class="headerlink" href="#remove-device" title="Permanent link">#</a></h2>
+<p>Click the "Remove devices" button. </p>
+<p><img alt="2FA remove device form" src="https://github.com/liquidinvestigations/docs-img/blob/7e2a6539793b6cea2349bb9ccbeddb4575df9001/2fa_settings_rm_1.png"/></p>
+<p>Enter your password and a valid OTP-Token from any of your devices.</p>
+<p><strong>Be careful:</strong> All the devices but the one you use to create that OTP-token are deleted from the list and won't work afterwards!</p>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.489407+00:00
+  -->
+</div>
+</body>
+</html>

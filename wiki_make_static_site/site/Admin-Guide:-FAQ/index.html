@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Operating Liquid Investigations Servers - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Maintenance/">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#operating-liquid-investigations-servers">Operating Liquid Investigations Servers</a></li>
+<li class="child"><a href="#something-broke-how-do-i-fix-it">Something broke, how do I fix it?</a></li>
+<li class="child"><a href="#invalid-https-certificates">Invalid HTTPS certificates</a></li>
+<li class="child"><a href="#nomad-wont-schedule-jobs">Nomad won't schedule jobs</a></li>
+<li class="child"><a href="#snoop-gets-stuck-when-processing">Snoop gets stuck when processing</a></li>
+<li class="child"><a href="#elasticsearch-wont-index-documents-hypothesis-wont-save-annotations">Elasticsearch won't index documents / Hypothesis won't save annotations</a></li>
+<li class="child"><a href="#docker-hub-download-rate-limit">Docker Hub - Download Rate Limit</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<h1 id="operating-liquid-investigations-servers">Operating Liquid Investigations Servers<a class="headerlink" href="#operating-liquid-investigations-servers" title="Permanent link">#</a></h1>
+<h2 id="something-broke-how-do-i-fix-it">Something broke, how do I fix it?<a class="headerlink" href="#something-broke-how-do-i-fix-it" title="Permanent link">#</a></h2>
+<ul>
+<li>Identify and save logs for failed job in the Nomad UI. Service health check responses are available in the Consul UI.</li>
+<li>Check <a href="https://github.com/orgs/liquidinvestigations/projects/1?card_filter_query=label%3Abug#card-29263439">issues labelled <code>bug</code></a> on the public board. If the bug is not tracked please add it.</li>
+<li>Ask on Slack!</li>
+</ul>
+<h2 id="invalid-https-certificates">Invalid HTTPS certificates<a class="headerlink" href="#invalid-https-certificates" title="Permanent link">#</a></h2>
+<p>There is a limitation with Traefik 1.7: it doesn't update the stored certificates if the configuration changes. This means an administrator will have to wipe the certificates after a change in:</p>
+<ul>
+<li><a href="https://github.com/liquidinvestigations/node/blob/20ece5af24e17e0321265b5abc683455a9a2225c/examples/liquid.ini#L12">domain</a></li>
+<li><a href="https://github.com/liquidinvestigations/node/blob/20ece5af24e17e0321265b5abc683455a9a2225c/examples/liquid.ini#L88">https on/off</a></li>
+<li><a href="https://github.com/liquidinvestigations/node/blob/20ece5af24e17e0321265b5abc683455a9a2225c/examples/liquid.ini#L92">caServer</a></li>
+</ul>
+<p>To wipe the certificates one should delete the Consul KV entries <code>/traefik</code> and <code>/liquid/traefik/acme</code> from the <a href="https://github.com/liquidinvestigations/node/blob/20ece5af24e17e0321265b5abc683455a9a2225c/examples/liquid.ini#L3">Consul UI</a>.</p>
+<p>To follow Traefik's progress in getting the HTTPS certificates from LetsEncrypt use the Nomad UI to follow its console output.</p>
+<h2 id="nomad-wont-schedule-jobs">Nomad won't schedule jobs<a class="headerlink" href="#nomad-wont-schedule-jobs" title="Permanent link">#</a></h2>
+<p>Try <a href="https://github.com/liquidinvestigations/docs/wiki/Maintenance#clean-reset">running a clean reset</a>. Watch out for <a href="https://github.com/liquidinvestigations/cluster/blob/474f0fd4910bee7e70a1ad09771f9c8033d7d63e/examples/registry-systemd-override.conf#L3">docker daemon GOMAXPROCS</a> if you are running on many cores. For machines with &gt;32 cores, we recommend configuring docker with <code>GOMAXPROCS</code> of 8-12.</p>
+<p>Nomad errors will be available in the Nomad UI after navigating to the job.</p>
+<h2 id="snoop-gets-stuck-when-processing">Snoop gets stuck when processing<a class="headerlink" href="#snoop-gets-stuck-when-processing" title="Permanent link">#</a></h2>
+<p>When processing many collections in parallel, one might run out of RabbitMQ memory. To check if this has happened:
+- Proxy port <code>10.66.60.1:9990</code> from server onto local machine <code>localhost:9990</code> using SSH LocalForward configuration.
+- Visit <code>http://localhost:9990/_snoop_rabbit/</code>, login with username <code>guest</code> and password <code>guest</code>.
+- Look at the "Memory" cell on the "Overview" screen. If it's red, then you're out of memory.</p>
+<p>If you're out of RabbitMQ memory, do one of these:
+- increase <code>rabbitmq_memory_limit</code> to 4+ GB, or
+- process less collections at the same time (set <code>process = off</code> on some of them, turn on again later)</p>
+<h2 id="elasticsearch-wont-index-documents-hypothesis-wont-save-annotations">Elasticsearch won't index documents / Hypothesis won't save annotations<a class="headerlink" href="#elasticsearch-wont-index-documents-hypothesis-wont-save-annotations" title="Permanent link">#</a></h2>
+<p>When the elasticsearch disk exceeds some 90% limit, elasticsearch will lock itself up.</p>
+<p>Hypothesis also uses elasticsearch to save annotations, so you'll see the same issue there.</p>
+<p>Be sure to free up some disk space first, then run:</p>
+<pre><code>export ES_ADDR=10.66.60.1:9990/_es
+curl  -XPUT "$ES_ADDR/_cluster/settings" -H 'Content-Type: application/json' -d '{"persistent":{"cluster.blocks.read_only":false}}'
+curl  -XPUT "$ES_ADDR/_all/_settings" -H 'Content-Type: application/json' -d'{ "index.blocks.read_only_allow_delete" : null } }'
+</code></pre>
+<p>... where 10.66.60.1 is the network address configured in cluster.ini and liquid.ini.</p>
+<p>For hypothesis, you have to identify the container port opened with <code>docker ps | grep hypothesis/elasticsearch</code> and set the ES_ADDR to that <code>ip:port</code>. Then, re-run the 2 commands.</p>
+<h2 id="docker-hub-download-rate-limit">Docker Hub - Download Rate Limit<a class="headerlink" href="#docker-hub-download-rate-limit" title="Permanent link">#</a></h2>
+<p>Docker Hub has been decreasing their free anonymous download limit. When deploying, you might reach this limit on your host IP.</p>
+<p>See <a href="https://docs.docker.com/docker-hub/download-rate-limit/">the Docker article on download-rate-limit</a>.</p>
+<p>Temporary work-around:
+- create a free Docker Hub account for each instance
+- do a <code>docker login</code> with new credentials on the machine running <code>./liquid deploy</code>.</p>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.364276+00:00
+  -->
+</div>
+</body>
+</html>

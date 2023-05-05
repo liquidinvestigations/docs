@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>How To Report A Bug - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Maintenance/">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#how-to-report-a-bug">How To Report A Bug</a></li>
+<li class="child"><a href="#in-order-to-do-this-you-should-provide-at-least-the-following-information">In order to do this, you should provide at least the following information:</a></li>
+<li class="child"><a href="#precise-steps-to-reproduce-the-bug">Precise steps to reproduce the bug.</a></li>
+<li class="child"><a href="#reference-to-business-rules-which-document-how-this-should-work-where-applicable">Reference to Business Rules which document how this should work (where applicable)</a></li>
+<li class="child"><a href="#file-your-bug-report">File your bug report</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<h1 id="how-to-report-a-bug">How To Report A Bug<a class="headerlink" href="#how-to-report-a-bug" title="Permanent link">#</a></h1>
+<p>When reporting bugs, the key is to give enough information so that the developer can make the website fail in front of them in the same way. If they cannot do that, then they will need to keep asking you for more information until they can make it fail.</p>
+<h2 id="in-order-to-do-this-you-should-provide-at-least-the-following-information">In order to do this, you should provide at least the following information:<a class="headerlink" href="#in-order-to-do-this-you-should-provide-at-least-the-following-information" title="Permanent link">#</a></h2>
+<h3 id="the-priority-of-the-issue">The priority of the issue<a class="headerlink" href="#the-priority-of-the-issue" title="Permanent link">#</a></h3>
+<p>High priority incidents as "Major" Priority - website doesn't load at all.
+Medium priority incidents as "Normal" Priority - I see pages, but functionality is sketchy. 
+Low priority incidents as "Low" Priority - everything works, however this button is offset.</p>
+<h3 id="the-browser-and-operating-system-you-are-using">The browser and operating system you are using<a class="headerlink" href="#the-browser-and-operating-system-you-are-using" title="Permanent link">#</a></h3>
+<p>Go to http://www.thismachine.info/ and copy/paste the information shown.</p>
+<h3 id="website-information">Website information<a class="headerlink" href="#website-information" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>Which website you are using (full url) </p>
+</li>
+<li>
+<p>Whether you are logged in to it</p>
+</li>
+<li>
+<p>The username of the account you have logged in with.</p>
+</li>
+</ul>
+<h2 id="precise-steps-to-reproduce-the-bug">Precise steps to reproduce the bug.<a class="headerlink" href="#precise-steps-to-reproduce-the-bug" title="Permanent link">#</a></h2>
+<p>Here you need to detail exactly what you did to get to the bug - this the most important part of any bug report. Be as precise as you can.</p>
+<ul>
+<li>Imprecise: "Go to my account".</li>
+<li>Precise: "When logged in, click on the "My account" link on http://www.mywebsite.com/".</li>
+</ul>
+<p>After your steps, precisely describe the observed result and the expected result. Clearly separate facts (observations) from speculations.</p>
+<ul>
+<li>Imprecise: "It doesn't work"</li>
+<li>Precise: "Instead of showing my account, it shows the message 'Your browser does not support cookies (error -91)'."</li>
+</ul>
+<h2 id="reference-to-business-rules-which-document-how-this-should-work-where-applicable">Reference to Business Rules which document how this should work (where applicable)<a class="headerlink" href="#reference-to-business-rules-which-document-how-this-should-work-where-applicable" title="Permanent link">#</a></h2>
+<p>It may be that what you're seeing is not a bug, but a feature you are not familiar with. </p>
+<p>Please search to find where it is documented, and compare your experiences with what should happen. Include a link or reference to the documentation in your bug reports.</p>
+<ul>
+<li>Documentation on Hoover is here: https://hoover.readthedocs.io/en/latest/</li>
+<li>Documentation on Liquid is here:</li>
+<li>Documentation on DokuWiki, RocketChat, NextCloud...</li>
+</ul>
+<h2 id="file-your-bug-report">File your bug report<a class="headerlink" href="#file-your-bug-report" title="Permanent link">#</a></h2>
+<p>For now, in order to file a bug, send an email with a title explaining the bug (Bug Report: Hoover search not working) to rcij@riseup.net. If you use sensitive urls encrypt your message (rcij key here http://pgp.zdv.uni-mainz.de:11371/pks/lookup?op=get&amp;search=0x44B07B4C9F082914) </p>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.399206+00:00
+  -->
+</div>
+</body>
+</html>

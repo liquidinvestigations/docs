@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Development First Steps # - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Maintenance/">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#development-first-steps">Development First Steps</a></li>
+<li class="child"><a href="#install-cluster">Install Cluster</a></li>
+<li class="child"><a href="#install-node">Install Node</a></li>
+<li class="child"><a href="#debugging-jobs">Debugging jobs</a></li>
+<li class="child"><a href="#set-up-ui-for-local-development">Set up UI for local development</a></li>
+<li class="child"><a href="#local-development">Local Development</a></li>
+<li class="child"><a href="#working-on-hoover-snoop">Working on Hoover Snoop</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<h1 id="development-first-steps">Development First Steps<a class="headerlink" href="#development-first-steps" title="Permanent link">#</a></h1>
+<h2 id="install-cluster">Install Cluster<a class="headerlink" href="#install-cluster" title="Permanent link">#</a></h2>
+<p>First you want to install the <code>cluster</code> following the <a href="https://github.com/liquidinvestigations/cluster#quick-start">instructions here.</a> </p>
+<h2 id="install-node">Install Node<a class="headerlink" href="#install-node" title="Permanent link">#</a></h2>
+<p>Afterwards you should install <code>node</code>. The instructions can be found <a href="https://github.com/liquidinvestigations/node#installation">here</a>.</p>
+<h2 id="debugging-jobs">Debugging jobs<a class="headerlink" href="#debugging-jobs" title="Permanent link">#</a></h2>
+<p>In case you are running into any errors while setting up <code>node</code> and <code>cluster</code>, you can check <code>consul</code> (<code>http://10.66.60.1:8500/ui/dc1/services</code>) and <code>nomad</code> (<code>http://10.66.60.1:4646/ui/jobs</code>) for logs or error messages. In <code>nomad</code> you can click on the jobs name or ID following the links until you reach a page, where you can see the logs.</p>
+<h2 id="set-up-ui-for-local-development">Set up UI for local development<a class="headerlink" href="#set-up-ui-for-local-development" title="Permanent link">#</a></h2>
+<p>You might want to work on the Hoover UI, so you can set it up for local development as explained <a href="https://github.com/liquidinvestigations/hoover-ui">here</a>.</p>
+<h2 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">#</a></h2>
+<p>See <a href="https://github.com/liquidinvestigations/node/blob/master/docs/Development.md">Development Readme</a> for instructions on how to mount the repos locally and set everything up for local development.</p>
+<h3 id="git-workflow">Git Workflow<a class="headerlink" href="#git-workflow" title="Permanent link">#</a></h3>
+<p>You want to create a feature-branch for everything you are working on. Once you need someone to review your work, push it to the remote repository, open a pull request and ask for review.</p>
+<h2 id="working-on-hoover-snoop">Working on Hoover Snoop<a class="headerlink" href="#working-on-hoover-snoop" title="Permanent link">#</a></h2>
+<p>If you are working on Snoop and want to debug running tasks or have a look at the databases, you can visit <code>http://10.66.60.1:9990/snoop/admin/_default/</code> (the IP adress depends on what you specified while setting up <code>cluster</code>). On the Snoop admin page you can see all the tasks and error messages appear there as well. Just choose a collection and go to <code>Tasks</code> for a list of tasks or <code>Task Stats</code> for an overview.</p>
+<h3 id="debugging-in-the-shell">Debugging in the shell<a class="headerlink" href="#debugging-in-the-shell" title="Permanent link">#</a></h3>
+<p>To debug tasks inside a shell you can use <code>./liquid shell hoover-workers:snoop-workers ./manage.py retrytask testdata 666 --fg</code> which will run the task in the foreground.</p>
+<h3 id="exploring-the-databases">Exploring the databases<a class="headerlink" href="#exploring-the-databases" title="Permanent link">#</a></h3>
+<p>To explore the databases you can enter <code>./liquid shell hoover-deps:snoop-pg psql -U snoop -d collection_testdata</code> and then use SQL. Enter <code>\h</code> for a list of SQL commands or <code>help</code> for a list of <code>psql</code> commands.</p>
+<h3 id="mange-collections">Mange collections<a class="headerlink" href="#mange-collections" title="Permanent link">#</a></h3>
+<p>See <a href="https://github.com/liquidinvestigations/node/blob/master/docs/Hoover.md">Hoover Readme</a> for the insctructions on how to manage collections in hoover.</p>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.441483+00:00
+  -->
+</div>
+</body>
+</html>

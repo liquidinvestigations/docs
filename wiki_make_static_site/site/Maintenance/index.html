@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Maintenance - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li class="active">
+<a href="./">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#upgrades">Upgrades</a></li>
+<li class="child"><a href="#1-update-the-cluster-to-version-xxx">1. Update the cluster to version X.X.X:</a></li>
+<li class="child"><a href="#2-updatenode-to-version-zzz">2. Updatenode to version Z.Z.Z:</a></li>
+<li><a href="#shutting-down">Shutting down</a></li>
+<li><a href="#clean-reset">Clean reset</a></li>
+<li><a href="#backup">Backup</a></li>
+<li><a href="#restore">Restore</a></li>
+<li><a href="#ex-import-accounts">Ex-/Import Accounts</a></li>
+<li><a href="#changing-domain-name">Changing domain name</a></li>
+<li class="child"><a href="#issues-after-domain-change">Issues after domain change</a></li>
+<li><a href="#other-problems">Other problems</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="prev">
+<a href="../Installation/" title="Installation">← Previous Page</a>
+</div>
+<div class="next">
+<a href="../Contributing/" title="Contributing"></a>Next Page →
+</div>
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<h2 id="upgrades">Upgrades<a class="headerlink" href="#upgrades" title="Permanent link">#</a></h2>
+<p>At some point after installing, you'll want to upgrade to a newer version of the Liquid bundle.</p>
+<p>Watch out for breaking changes in the configuration by looking at the changelogs (tag messages) in:</p>
+<ul>
+<li><a href="https://github.com/liquidinvestigations/node/releases">the node releases page</a></li>
+<li><a href="https://github.com/liquidinvestigations/cluster/releases">the cluster releases page</a></li>
+</ul>
+<h3 id="1-update-the-cluster-to-version-xxx">1. Update the <code>cluster</code> to <a href="https://github.com/liquidinvestigations/cluster/releases">version <code>X.X.X</code></a>:<a class="headerlink" href="#1-update-the-cluster-to-version-xxx" title="Permanent link">#</a></h3>
+<pre><code>cd /opt/cluster
+git fetch -ap
+git checkout vX.X.X
+# check for new settings in `examples/cluster.ini` and add them to `cluster.ini`
+bin/docker.sh --rm --pull --image liquidinvestigations/cluster:X.X.X
+# wait for services to be ready
+docker exec cluster ./cluster.py wait
+</code></pre>
+<h3 id="2-updatenode-to-version-zzz">2. Update<code>node</code> to <a href="https://github.com/liquidinvestigations/node/releases">version <code>Z.Z.Z</code></a>:<a class="headerlink" href="#2-updatenode-to-version-zzz" title="Permanent link">#</a></h3>
+<pre><code>cd /opt/node
+git fetch
+git checkout vZ.Z.Z
+# check for new settings in `examples/liquid.ini` and add them to `liquid.ini`
+./liquid resources
+./liquid deploy
+</code></pre>
+<h2 id="shutting-down">Shutting down<a class="headerlink" href="#shutting-down" title="Permanent link">#</a></h2>
+<p>To shut down the bundle, stop the cluster container, with a generous timeout:</p>
+<pre><code class="language-shell">docker stop -t 120 cluster
+</code></pre>
+<p>If Nomad isn't configured to drain jobs (or the drain operation fails) you may also need to kill all containers it left behind:</p>
+<pre><code class="language-shell">docker stop $(docker ps -qa)
+</code></pre>
+<h2 id="clean-reset">Clean reset<a class="headerlink" href="#clean-reset" title="Permanent link">#</a></h2>
+<p>Some <a href="https://www.nomadproject.io/guides/upgrade/upgrade-specific.html">Nomad versions</a> require clearing the server data for upgrades. In those cases it's best to clear the docker system images too, using the following command sequence.</p>
+<pre><code class="language-bash">./liquid halt
+docker stop -t 120 cluster
+docker stop $(docker ps -qa)
+docker system prune --all --force --volumes
+sudo rm -rf /opt/cluster/var/nomad
+</code></pre>
+<p>... and continue with deploying normally as described in the beginning of this article:</p>
+<pre><code class="language-bash">cd /opt/cluster
+git fetch -ap
+git checkout vX.X.X
+bin/docker.sh --rm --pull --image liquidinvestigations/cluster:X.X.X
+docker exec cluster ./cluster.py wait
+
+cd /opt/node
+git fetch -ap
+git checkout vZ.Z.Z
+./liquid resources
+./liquid deploy
+</code></pre>
+<p><em>Note:</em> if the <code>docker system prune --all --force --volumes</code> command takes too long to finish, <code>sudo systemctl restart docker</code> and re-run it.</p>
+<h2 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">#</a></h2>
+<p>run <code>./liquid backup [OPTIONS] $DIR</code> to back up the system. </p>
+<p>Optional parameters to specify which parts of the system will be backed up:</p>
+<p><code>--no-apps</code>             : excludes app data from backup<br/>
+<code>--no-collections</code>      : excludes collections from backup<br/>
+<code>--no-pg</code>               : excludes collection databases from backup<br/>
+<code>--no-es</code>               : excludes collection es snapshots from backup<br/>
+<code>--no-blobs</code>            : excludes collection blobs (<strong>B</strong>inary <strong>L</strong>arge <strong>OB</strong>jects) from backup<br/>
+<code>--collection $NAME</code>    : backup specific collection</p>
+<p>When no optional parameter is given, the whole system will be backed up.</p>
+<h2 id="restore">Restore<a class="headerlink" href="#restore" title="Permanent link">#</a></h2>
+<p>Make sure a clean system is installed before starting with the restore process.</p>
+<p>Restoring apps: <code>./liquid restore-apps $DIR</code></p>
+<p>Restore collection: <code>./liquid restore-collection $DIR $NAME</code></p>
+<p>Restoring collections: <code>./liquid restore-all-collections $DIR</code></p>
+<p><em>Note:</em> The collections have to be disabled in the <code>liquid.ini</code> to be restored. After the restore process is finished the collections have to be enabled in the <code>liquid.ini</code> again to be accessible.</p>
+<p>To finish the restore process run <code>./liquid deploy</code>.</p>
+<h2 id="ex-import-accounts">Ex-/Import Accounts<a class="headerlink" href="#ex-import-accounts" title="Permanent link">#</a></h2>
+<p>To create a full data dump containing auth and otp data, use Django's dumpdata command like this: </p>
+<pre><code>./liquid shell liquid:core ./manage.py dumpdata auth otp_totp &gt; users.json
+</code></pre>
+<p>Restore this, maybe on a different machine, using the users.json file, copy it into the liquid:core container and run:</p>
+<pre><code>docker cp users-json core-...:/app/users.json
+./liquid shell liquid:core
+./manage.py loaddata users.json
+rm users.json
+exit
+</code></pre>
+<h2 id="changing-domain-name">Changing domain name<a class="headerlink" href="#changing-domain-name" title="Permanent link">#</a></h2>
+<p>After changing the upstream network configuration, you will also have to change the following:</p>
+<ul>
+<li>domain in <code>liquid.ini</code></li>
+<li>change domain under <code>volumes/nextcloud/nextcloud/config/config.php</code> (it appears two times) </li>
+</ul>
+<h3 id="issues-after-domain-change">Issues after domain change<a class="headerlink" href="#issues-after-domain-change" title="Permanent link">#</a></h3>
+<h4 id="hypothesis">Hypothesis<a class="headerlink" href="#hypothesis" title="Permanent link">#</a></h4>
+<p>Bulk changing of annotation target URLs is not officially supported by upstream (<a href="https://web.hypothes.is/help/how-to-establish-or-avoid-document-equivalence-in-the-hypothesis-system/">docs page</a>), so we use database-level replace to change the targets ourselves.</p>
+<p>To fix hypothesis configuration, run these commands 
+after replacing <code>NEW.DOMAIN.ORG</code> and <code>OLD.DOMAIN.COM</code> with the new and domains you set in <code>[liquid] liquid_domain</code>.</p>
+<pre><code>./liquid shell hypothesis:hypothesis ./bin/hypothesis -- --  move-uri --old 'OLD.DOMAIN.COM' --new 'NEW.DOMAIN.COM'
+</code></pre>
+<pre><code>./liquid dockerexec hypothesis-deps:pg pg_dump -U hypothesis hypothesis -C -c &gt; h.sql
+sed -i.bak 's/OLD.DOMAIN.COM/NEW.DOMAIN.ORG/g' h.sql
+
+# stop the Hypothesis web service from the UI, then run:
+./liquid dockerexec hypothesis-deps:pg dropdb hypothesis -U hypothesis
+echo "create database hypothesis with owner = hypothesis" | ./liquid shell hypothesis-deps:pg psql -U hypothesis -d postgres
+cat h.sql | ./liquid dockerexec hypothesis-deps:pg psql -U hypothesis
+</code></pre>
+<p>The previous command doesn't replace the USER IDs, but our database script above does, so please run both.</p>
+<p>And restart hypothesis from the Nomad Web UI.</p>
+<p>After finishing the requests above, run:</p>
+<pre><code>./liquid shell hypothesis:hypothesis ./bin/hypothesis -- -- search reindex
+</code></pre>
+<h4 id="rocketchat">Rocketchat<a class="headerlink" href="#rocketchat" title="Permanent link">#</a></h4>
+<p>Login with the auto-generated admin user and password and update all these settings by hand:
+- General &gt; Site URL
+- OAuth2 &gt; Liquid</p>
+<p>Take care in updating HTTP vs. HTTPS for your new domain.</p>
+<h4 id="https-certificates">HTTPS certificates<a class="headerlink" href="#https-certificates" title="Permanent link">#</a></h4>
+<p>HTTPS certificates are not automatically removed. See the <a href="admin-faq" title="Admin FAQ">Admin FAQ</a> for more details.</p>
+<h2 id="other-problems">Other problems<a class="headerlink" href="#other-problems" title="Permanent link">#</a></h2>
+<p>Use the <a href="admin-faq" title="Admin FAQ">Admin FAQ</a> for miscellaneous operating details and the <a href="security" title="Security">Security</a> page on how to keep a production system secure.</p>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.445646+00:00
+  -->
+</div>
+</body>
+</html>

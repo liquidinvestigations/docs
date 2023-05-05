@@ -1,0 +1,31 @@
+site_name: "Liquid Investigations Documentation"
+site_author: "Liquid Investigations"
+site_description: ""
+site_keyword: ""
+
+theme:
+  name: github
+  highlightjs: true
+  hljs_style: github
+
+badge:
+ github_repo: docs 
+ github_user: liquidinvestigations
+
+markdown_extensions:
+    - toc:
+        permalink: "#"
+nav:
+    - 'Home.md'
+    - 'User-Guide.md'
+    - 'Technical-Overview.md'
+    - 'Installation.md'
+    - 'Maintenance.md'
+    - 'Contributing.md'
+plugins:
+    - search
+    - ezlinks:
+        warn_ambiguities: true
+        wikilinks: true
+        reference_links: true
+    - no3rdparty

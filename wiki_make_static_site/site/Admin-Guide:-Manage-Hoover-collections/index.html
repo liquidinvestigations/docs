@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Liquid Investigations" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Admin Guide: Manage Hoover collections - Liquid Investigations Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../3rd_party/9e9b891ea95f94bb0d2987eb321038b21e18e4bcf40952b3c395f9f1dedbd78a.css" rel="stylesheet"/>
+<script defer="" src="../js/theme.js"></script>
+<script> var base_url = ".." </script>
+<script defer="" src="../search/main.js"></script>
+<script src="../3rd_party/632b81a251031556feb71f85b39c004ba32a853ccca075cbe2936e4c5537da62.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<header class="header">
+<a class="pizza" id="nav-toggle">☰</a>
+<div class="title">
+<a class="logo" href="/">Liquid Investigations Documentation </a>
+<img alt="GitHub" src="https://flat.badgen.net/github/license/liquidinvestigations/docs"/>
+<a href="https://github.com/liquidinvestigations/docs" target="_blank">
+<img alt="GitHub stars" class="stars" src="https://img.shields.io/github/stars/liquidinvestigations/docs?style=social"/>
+</a>
+<div class="search" role="search">
+<form><input id="mkdocs-search-query" placeholder="Search docs" type="search"/></form>
+</div>
+</div>
+<a class="scrh" id="nav-scrh">⌕</a>
+</header>
+<div class="side" id="side">
+<h2>Page</h2>
+<ul>
+<!--
+-->
+<li>
+<a href="../Home/">Home</a>
+</li>
+<!--
+-->
+<li>
+<a href="../User-Guide/">User Guide</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Technical-Overview/">Technical Overview</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Installation/">Installation</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Maintenance/">Maintenance</a>
+</li>
+<!--
+-->
+<li>
+<a href="../Contributing/">Contributing</a>
+</li>
+</ul>
+<h2>Table Of Contents</h2>
+<ul class="current" id="toc">
+<li><a href="#adding-and-removing-collections">Adding and Removing collections</a></li>
+<li class="child"><a href="#importing-and-exporting-collections">Importing and Exporting collections</a></li>
+<li><a href="#managing-access-rights">Managing access rights</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li class="child"><a href="#supported-file-types">Supported file types</a></li>
+<li class="child"><a href="#collection-size-limit">Collection Size Limit</a></li>
+</ul>
+<div class="about">
+<hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+</div>
+<div class="spacer"><!-- i am margin --></div>
+<div class="markdown-body">
+<div class="clear"></div>
+<div id="mkdocs-search-results"></div>
+<div id="body">
+<h2 id="adding-and-removing-collections">Adding and Removing collections<a class="headerlink" href="#adding-and-removing-collections" title="Permanent link">#</a></h2>
+<p>Adding, removing and modifying collections requires SSH access to the machine.</p>
+<p>The administrator must place the collection files in a specific directory on the server, edit the configuration <code>.ini</code> file to add it, and redeploy the server to start processing it.</p>
+<p>Specific instructions on managing collections can be found in
+<a href="https://github.com/liquidinvestigations/node/blob/master/docs/Hoover.md">the node documentation</a>.</p>
+<h3 id="importing-and-exporting-collections">Importing and Exporting collections<a class="headerlink" href="#importing-and-exporting-collections" title="Permanent link">#</a></h3>
+<p>Collections can also be saved as zip files and restored by the administrator. This also requires SSH access to the machine.</p>
+<p>Specific details for importing and exporting are <a href="https://github.com/liquidinvestigations/docs/wiki/Maintenance#backup">on the Maintenance wiki page</a>.</p>
+<h2 id="managing-access-rights">Managing access rights<a class="headerlink" href="#managing-access-rights" title="Permanent link">#</a></h2>
+<p>To change access rules to these collections, visit Hoover, click on the <strong>ADMIN</strong> button, and select <strong>Collections</strong>. There, each collection can be configured to allow users, groups or public access.</p>
+<p>Please note: the <em>Public</em> checkbox allows any authenticated user to see the collection. It cannot be visited by unauthenticated users, so it is, in a sense, <em>Public to the server</em>.</p>
+<p>For more details, follow
+<a href="https://github.com/liquidinvestigations/docs/wiki/Admin-Guide:-Permissions-for-Hoover-collections">the relevant Wiki article</a>.</p>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">#</a></h2>
+<h3 id="supported-file-types">Supported file types<a class="headerlink" href="#supported-file-types" title="Permanent link">#</a></h3>
+<p>Supported file types are listed <a href="https://github.com/liquidinvestigations/hoover-snoop2/blob/master/docs/filetypes.md">in this table</a>.</p>
+<h3 id="collection-size-limit">Collection Size Limit<a class="headerlink" href="#collection-size-limit" title="Permanent link">#</a></h3>
+<p>Collections are kept on a single SQL database each. This means we have a natural limit of how many files a collection can have.</p>
+<p>Please keep each collection document count to <strong>below 1 million documents</strong>, and each collection data size <strong>below 500 GB</strong>.</p>
+<p>For larger datasets, the admin must unpack/unarchive the data manually into folders, and split them up into collections based on the <em>1 million documents / 500 GB</em> limitations above. For ease of administering many collections, a user group can be created to allow access to many collections for many users in one go.</p>
+<p>Please note that different types of data have a different density in number of files per TB. For example, zips tend to have the most files per TB, followed closely by emails (which are only a few KB each). Word documents, scans, pictures, and other multimedia tend to be less dense.  </p>
+<p>Here are some rough examples on how one can reach the 1 million documents target:
+- <code>10-20 GB</code>  - zips with emails (text only)
+- <code>25-75 GB</code>  - emails (text only, unpacked)
+- <code>100-300 GB</code> - emails (with attachments, unpacked)
+- <code>25-150 GB</code> - zips with mixed content
+- <code>200-500 GB</code> - Words, PDF, Scans, Pictures (unpacked)</p>
+<p>Please use the rough estimation above to manually split the dataset into collections that are below the <em>1 million documents and 500 GB limit</em>. A good rule of thumb is to split datasets into collections of around <code>200-300 GB</code> each.</p>
+<p>For example, if a dataset comes as a single 3 TB file called <code>data.zip</code>, the steps are:
+- Manually extract the archive
+- Check number of files and total size
+  - File count in Linux: <code>find DATA_FOLDER -type f | wc -l</code>
+  - Folder size in Linux: <code>du -hd1 DATA_FOLDER | sort -h</code>
+- Splt extracted data into collections of around <code>200 GB</code> each, based on the examples above
+  - Use <code>mv</code> commands to move folders around with no wait time, <em>on the same file system</em>
+- If any file of size <code>&gt; 200 GB</code> is found inside, unpack it manually and split its contents among more collections
+- Final setup should have around 15 collections for that dataset</p>
+</div>
+<hr/>
+<!--
+  MkDocs version      : 1.4.3
+  Docs Build Date UTC : 2023-05-05 13:37:12.367805+00:00
+  -->
+</div>
+</body>
+</html>
