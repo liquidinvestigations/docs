@@ -1,17 +1,10 @@
 #!/bin/bash -ex
-
-DOCS_DIR=docs
-WIKI_REPO_LINK="https://github.com/liquidinvestigations/docs.wiki.git"
-
-sudo rm -rf $DOCS_DIR
-mkdir -p $DOCS_DIR
-git clone $WIKI_REPO_LINK $DOCS_DIR
-(
-        cd $DOCS_DIR
-        git pull
-        ln -s Home.md index.md
-)
-
-
-pipenv install
-pipenv run mkdocs build
+mkdir -p .local
+docker build . --tag li-docs
+docker rm -f li-docs || true
+docker run -it --rm --name li-docs \
+        --user $(id -u):$(id -g) \
+        -v $PWD:/app \
+        -v $PWD/.local:/.local \
+        li-docs \
+        bash in-container.sh

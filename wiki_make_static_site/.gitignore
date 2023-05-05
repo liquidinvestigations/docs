@@ -1,2 +1,8 @@
 /docs/*
 /docs
+/site
+/site/*
+/original-links.txt
+/all-links.txt
+/output
+/.local

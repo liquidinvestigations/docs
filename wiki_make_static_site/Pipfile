@@ -11,6 +11,8 @@ cairosvg = "*"
 mkdocs-ezlinks-plugin = "*"
 mkdocs-github = "*"
 mkdocs-no-3rd-party-plugin = "*"
+mkdocs-roamlinks-plugin = "*"
+mkdocs-material = "*"
 
 [dev-packages]
 

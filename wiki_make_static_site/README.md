@@ -8,4 +8,4 @@ Script to download this repo's wiki and make static site from it.
 - `pip install pipenv`
 - `./run.sh`
 
-Find output in `site/`
+Find output files in `site/`, and a zipped result in `output/`.
