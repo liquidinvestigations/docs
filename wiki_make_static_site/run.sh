@@ -1,4 +1,5 @@
-#!/bin/bash -ex
+#!/bin/bash
+set -ex
 mkdir -p .local
 docker build . --tag li-docs
 docker rm -f li-docs || true

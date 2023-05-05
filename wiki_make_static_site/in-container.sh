@@ -1,11 +1,13 @@
-#!/bin/bash -ex
+#!/bin/bash
+
+set -ex
 
 DOCS_DIR=docs
 SITE_DIR=site
 OUT_DIR=output
 WIKI_REPO_LINK="https://github.com/liquidinvestigations/docs.wiki.git"
 
-sudo rm -rf $DOCS_DIR $SITE_DIR
+rm -rf $DOCS_DIR $SITE_DIR
 mkdir -p $DOCS_DIR
 git clone $WIKI_REPO_LINK $DOCS_DIR
 # mkdocs really wants this filename
@@ -23,6 +25,9 @@ python fix-links.py
 grep -rEohI "(http|https)://[a-zA-Z0-9./?=_%:-]*" $SITE_DIR | sort -u > all-links.txt
 python save-assets.py
 
+set +x
 rm -rf $OUT_DIR
 mkdir -p $OUT_DIR
-( shopt -s dotglob ; cd site; zip -r ../$OUT_DIR/docs.zip * )
+( shopt -s dotglob ; cd site; zip -r ../$OUT_DIR/docs.zip * ) 2>&1 >/dev/null
+du -h output/docs.zip
+echo DONE
