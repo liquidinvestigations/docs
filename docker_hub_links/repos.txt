@@ -58,7 +58,6 @@ liquidinvestigations/tesseract-batch
 liquidinvestigations/testdata-extra-demo-data
 liquidinvestigations/thumbnail-generators
 liquidinvestigations/ui-templates
-liquidinvestigations/uptrace
 liquidinvestigations/vmck
 liquidinvestigations/web-ui
 liquidinvestigations/wifi-test
